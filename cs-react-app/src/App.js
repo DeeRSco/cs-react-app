@@ -1,21 +1,10 @@
-const greeting = "Good afternoon";
-const user = "my precious little peonies";
+import users from "./users.json";
+import todos from "./todos.json";
+console.log(users);
+console.log(todos);
 
-const ducky1 = 5;
-const ducky2 = 7;
-
-const leaf = {
-  name: "Deanna",
-  location: "Philly",
-  activities: ["gardening", "gaming", "biking"],
-};
-
-const cat = {
-  color: "greige",
-  numKittens: 5,
-  image:
-    "https://bestfriends.org/sites/default/files/inline-images/Foster-Agave-1-byAnnika-Harley.jpg",
-};
+const greeting = "Welcome to React";
+const user = "Cohort 2024";
 
 function App() {
   return (
@@ -24,36 +13,51 @@ function App() {
         {greeting} {user}
       </h1>
 
-      <p>
-        {ducky1} + {ducky2}={ducky1 + ducky2}
-        <br></br>
-        {ducky1} - {ducky2}={ducky1 - ducky2}
-        <br></br>
-        {ducky1} * {ducky2}={ducky1 * ducky2}
-        <br></br>
-        {ducky1} / {ducky2}={ducky1 / ducky2}
-      </p>
-
-      <p>
-        My name is {leaf.name} and I live in {leaf.location}. Some things I
-        enjoy are:
-        <ul>
-          <li>{leaf.activities[0]}</li>
-          <li>{leaf.activities[1]}</li>
-          <li>{leaf.activities[2]}</li>
-        </ul>
-      </p>
-
-      <p>
-        <img src={cat.image}></img>
-        The image contains a {cat.color} cat with {cat.numKittens} kittens close by.
-      </p>
-
-      {/*just a random comment to myself*/}
+      <Users />
+      <Todos />
     </div>
   );
 }
 
+function Users() {
+  return (
+    <div>
+      <h2>Users</h2>
+      
+      {users.map((user) => (
+        <div>
+          <h3>{user.name}</h3>
+          <p>Email:</p>
+          <a href={`mailto:${user.email}`}>{user.email}</a>
+          <p>Address: </p>
+          <address>
+            <p>
+              {user.address.street} {user.address.suite}
+            </p>
+            <p>
+              {user.address.city} {user.address.zipcode}
+            </p>
+          </address>
+          <p>Company:</p>
+          <p>{user.company.name}</p>
+          <p>{user.company.catchPhrase}</p>
+        </div>
+      ))}
+    </div>
+  )
+  
+};
 
+function Todos() {
+  return (<div>
+    <h2>To Dos</h2>
+    {todos.map((todo)=> (
+      <div>
+        <p>To Do: {todo.title}</p>
+        <p>Status: {todo.completed ? "Completed" : "In progress"}</p>
+      </div>
+    ))}
+  </div>);
+}
 
 export default App;
