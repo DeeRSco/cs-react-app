@@ -6,6 +6,8 @@ console.log(todos);
 const greeting = "Welcome to React";
 const user = "Cohort 2024";
 
+const items = ["dress", "shoes", "purse", "jewelry"];
+
 function App() {
   return (
     <div className="App">
@@ -23,7 +25,7 @@ function Users() {
   return (
     <div>
       <h2>Users</h2>
-      
+
       {users.map((user) => (
         <div>
           <h3>{user.name}</h3>
@@ -44,20 +46,39 @@ function Users() {
         </div>
       ))}
     </div>
-  )
-  
-};
+  );
+}
 
 function Todos() {
-  return (<div>
-    <h2>To Dos</h2>
-    {todos.map((todo)=> (
-      <div>
-        <p>To Do: {todo.title}</p>
-        <p>Status: {todo.completed ? "Completed" : "In progress"}</p>
-      </div>
-    ))}
-  </div>);
+  return (
+    <div>
+      <h2>To Dos</h2>
+      {todos.map((todo) => (
+        <div>
+          <p>To Do: {todo.title}</p>
+          <p>Status: {todo.completed ? "Completed" : "In progress"}</p>
+        </div>
+      ))}
+    </div>
+  );
+}
+
+function ShoppingListForm() {
+  return (
+    <form>
+      <label htmlFor="itemName">Item Name:</label>
+      <input type="text" id="itemName" name="itemName"></input>
+      <button type="submit">Submit</button>
+    </form>
+  );
+}
+
+function ShoppingList() {
+  return(
+    <div>
+      
+    </div>
+  )
 }
 
 export default App;
